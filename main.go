@@ -18,7 +18,9 @@ func main() {
 
 	fmt.Println(string(data))
 
-	//Converting byte string to bit
+	fmt.Println(data)
+
+	//Converting byte to bit
 	fmt.Printf("%08b", data)
 
 }
