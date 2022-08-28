@@ -1,10 +1,11 @@
 package golomb
 
 import (
-	"encoding/binary"
 	"fmt"
 	"math"
 )
+
+//https://en.wikipedia.org/wiki/Golomb_coding
 
 func golomb(divisor int, dados []byte) {
 
@@ -13,8 +14,8 @@ func golomb(divisor int, dados []byte) {
 	}
 
 	for _, x := range dados {
-		value := binary.BigEndian.Uint64(x)
-		q := math.Floor(divisor / value)
+		value := int(x)
+		q := math.Floor(float64(divisor / value))
 	}
 
 }
