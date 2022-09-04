@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 )
 
@@ -16,8 +15,6 @@ func main() {
 	data, err := os.ReadFile("files/test.txt")
 	check(err)
 
-	fmt.Println(string(data))
-
-	fmt.Println(data)
+	GolombCoding(2, data)
 
 }
