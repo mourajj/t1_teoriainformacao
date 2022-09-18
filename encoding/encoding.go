@@ -1,7 +1,6 @@
 package encoding
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 )
@@ -82,8 +81,6 @@ func EliasGamma(dados []byte) []string {
 			resto := int(float64(x) - math.Pow(2, float64(log)))
 			output := ""
 
-			fmt.Printf("prefixo: %d, sufixo: %d\n", log, resto)
-
 			for i := 0; i < log; i++ {
 				output = output + "0"
 			}
@@ -106,8 +103,6 @@ func EliasGamma(dados []byte) []string {
 			log := int(math.Log2(float64(x)))
 			resto := int(float64(x) - math.Pow(2, float64(log)))
 			output := ""
-
-			fmt.Printf("prefixo: %d, sufixo: %d\n", log, resto)
 
 			for i := 0; i < log; i++ {
 				output = output + "0"
