@@ -65,25 +65,66 @@ func Unario(dados []byte) []string {
 func EliasGamma(dados []byte) []string {
 
 	result := []string{}
+	contem0 := false
 
-	for _, x := range dados {
-		log := int(math.Log2(float64(x)))
-		resto := int(float64(x) - math.Pow(2, float64(log)))
-		output := ""
-
-		fmt.Printf("prefixo: %d, sufixo: %d\n", log, resto)
-
-		for i := 0; i < log; i++ {
-			output = output + "0"
+	//Verificando de tem um 0 nos dados, caso tenha, adiciona +1 em cada unidade do slice de dados.
+	for _, y := range dados {
+		if y == 0 {
+			contem0 = true
+			break
 		}
+	}
 
-		var sufix string = strconv.FormatInt(int64(resto), 2)
+	if contem0 {
+		for _, x := range dados {
+			x = x + 1
+			log := int(math.Log2(float64(x)))
+			resto := int(float64(x) - math.Pow(2, float64(log)))
+			output := ""
 
-		for int(len(sufix)) < log {
-			sufix = "0" + sufix
+			fmt.Printf("prefixo: %d, sufixo: %d\n", log, resto)
+
+			for i := 0; i < log; i++ {
+				output = output + "0"
+			}
+
+			var sufix string = strconv.FormatInt(int64(resto), 2)
+
+			for int(len(sufix)) < log {
+				sufix = "0" + sufix
+			}
+			output = output + "1" + sufix
+
+			if x == 1 {
+				output = "1"
+			}
+			result = append(result, output)
+
 		}
-		output = output + "1" + sufix
-		result = append(result, output)
+	} else {
+		for _, x := range dados {
+			log := int(math.Log2(float64(x)))
+			resto := int(float64(x) - math.Pow(2, float64(log)))
+			output := ""
+
+			fmt.Printf("prefixo: %d, sufixo: %d\n", log, resto)
+
+			for i := 0; i < log; i++ {
+				output = output + "0"
+			}
+
+			var sufix string = strconv.FormatInt(int64(resto), 2)
+
+			for int(len(sufix)) < log {
+				sufix = "0" + sufix
+			}
+			output = output + "1" + sufix
+
+			if x == 1 {
+				output = "1"
+			}
+			result = append(result, output)
+		}
 	}
 
 	return result
