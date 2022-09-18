@@ -1,6 +1,7 @@
 package encoding
 
 import (
+	"fmt"
 	"math"
 	"strconv"
 )
@@ -56,6 +57,33 @@ func Unario(dados []byte) []string {
 		output = output + "1"
 		result = append(result, output)
 
+	}
+
+	return result
+}
+
+func EliasGamma(dados []byte) []string {
+
+	result := []string{}
+
+	for _, x := range dados {
+		log := int(math.Log2(float64(x)))
+		resto := int(float64(x) - math.Pow(2, float64(log)))
+		output := ""
+
+		fmt.Printf("prefixo: %d, sufixo: %d\n", log, resto)
+
+		for i := 0; i < log; i++ {
+			output = output + "0"
+		}
+
+		var sufix string = strconv.FormatInt(int64(resto), 2)
+
+		for int(len(sufix)) < log {
+			sufix = "0" + sufix
+		}
+		output = output + "1" + sufix
+		result = append(result, output)
 	}
 
 	return result

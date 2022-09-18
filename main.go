@@ -27,9 +27,10 @@ func main() {
 
 	//fmt.Println(data)
 
-	testData := []byte{2, 3, 0, 1, 1, 6, 2, 4, 4, 4, 1, 3, 5, 2}
+	//testData := []byte{2, 3, 0, 1, 1, 6, 2, 4, 4, 4, 1, 3, 5, 2}
+	testData2 := []byte{5}
 
-	fmt.Println(encoding.Golomb(4, testData))
+	fmt.Println(encoding.EliasGamma(testData2))
 	//fmt.Println(encoding.Unario(testData))
 
 }
