@@ -129,3 +129,56 @@ func EliasGamma(dados []byte) []string {
 
 	return result
 }
+
+func closestFibonacciNumber(n int) int {
+	if n == 0 || n == 1 {
+		return n
+	}
+
+	//Achar o maior numero de Fibonacci menor que N
+	f1, f2, f3 := 0, 1, 1
+
+	for f3 <= n {
+		f1 = f2
+		f2 = f3
+		f3 = f1 + f2
+	}
+
+	return f2
+}
+
+func representacaoFibonacci(n int) []int {
+	valRepresentados := []int{}
+	for n > 0 {
+
+		f := closestFibonacciNumber(n)
+		valRepresentados = append(valRepresentados, f)
+		n = n - f
+	}
+
+	return valRepresentados
+}
+
+func Fibonacci(dados []byte) []string {
+
+	result := []string{}
+	Fibonacci := []int{1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144}
+
+	for _, x := range dados {
+		valRepresentados := representacaoFibonacci(int(x))
+		output := ""
+		j := len(valRepresentados) - 1
+
+		for i := 0; j >= 0; i++ {
+			if Fibonacci[i] == valRepresentados[j] {
+				output = output + "1"
+				j--
+			} else {
+				output = output + "0"
+			}
+		}
+		output = output + "1"
+		result = append(result, output)
+	}
+	return result
+}
