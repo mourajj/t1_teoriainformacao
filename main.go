@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"teoriaInformacao/encoding"
 )
 
@@ -23,11 +22,14 @@ func check(e error) {
 
 func main() {
 
-	data, err := os.ReadFile("files/test.txt")
-	check(err)
+	//data, err := os.ReadFile("files/test.txt")
+	//check(err)
 
-	fmt.Println(data)
+	//fmt.Println(data)
 
-	fmt.Println(encoding.GolombCoding(4, data))
+	testData := []byte{2, 3, 0, 1, 1, 6, 2, 4, 4, 4, 1, 3, 5, 2}
+
+	fmt.Println(encoding.Golomb(4, testData))
+	//fmt.Println(encoding.Unario(testData))
 
 }
